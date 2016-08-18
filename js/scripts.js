@@ -3,7 +3,6 @@ var romanNums = ["M","D", "C", "L", "X", "V", "I"];
 
 function isValid(input) {
   if (isNaN(input) === true || input <= 0 || input >= 4000 || input !== Math.floor(input)) {
-    alert("Please enter a whole number between 1 and 3,999");
     return false;
   } else {
   return true;
@@ -68,5 +67,15 @@ function toLetters(array){
 }
 // UI Logic
 $(document).ready(function() {
-     $("#salad").prepend("<h1>This is a header</h1>");
+  $("form").submit(function(event) {
+    var number = $("input#number").val();
+    if (isValid(parseInt(number))) {
+      number = separator(number);
+      var roman = toLetters(cleanFours(toRoman(fiver(number))));
+      $("#result").text(roman);
+    } else {
+      alert("Please enter a whole number between 1 and 3,999");
+    }
+    event.preventDefault();
+  });
 });
