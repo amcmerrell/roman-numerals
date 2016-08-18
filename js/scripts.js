@@ -31,9 +31,41 @@ function fiver(array) {
       array.splice(i, 0, 0);
     }
   }
+
   return array;
 }
 
+function toRoman(array) {
+  array.forEach(function(element, index){
+    var tempArray = [index, element]
+    array[index] = tempArray;
+  });
+  return array;
+}
+
+function cleanFours(array){
+  for(i=array.length - 1; i > 0; i--) {
+    if (array[i][1] === 4 && array[i-1][1] === 0){
+      array[i][1]=1;
+      array.splice(i + 1, 0, [array[i][0]-1, 1]);
+    } else if (array[i][1] === 4 && array[i-1][1] === 1){
+      array[i][1] = 1;
+      array[i-1][1] = 0;
+      array.splice(i+1, 0, [array[i][0]-2, 1]);
+    }
+  }
+  return array;
+}
+
+function toLetters(array){
+  var output = "";
+  array.forEach(function(element, index){
+    for (i = array[index][1]; i > 0; i--){
+      output = output + romanNums[array[index][0]];
+    }
+  });
+  return output;
+}
 // UI Logic
 $(document).ready(function() {
      $("#salad").prepend("<h1>This is a header</h1>");
