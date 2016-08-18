@@ -2,7 +2,8 @@
 var romanNums = ["M","D", "C", "L", "X", "V", "I"];
 
 function isValid(input) {
-  if (isNaN(input) === true || input <= 0 || input >= 4000 || input !== Math.floor(input)) {
+  var test = parseFloat(input);
+  if (isNaN(test) === true || test <= 0 || test >= 4000 || input.match(/.*(\.|,).*/) !== null) {
     return false;
   } else {
   return true;
@@ -69,12 +70,12 @@ function toLetters(array){
 $(document).ready(function() {
   $("form").submit(function(event) {
     var number = $("input#number").val();
-    if (isValid(parseInt(number))) {
+    if (isValid(number)) {
       number = separator(number);
       var roman = toLetters(cleanFours(toRoman(fiver(number))));
       $("#result").text(roman);
     } else {
-      alert("Please enter a whole number between 1 and 3,999");
+      alert("Please enter a whole number between 1 and 3999 without any commas or decimal points");
     }
     event.preventDefault();
   });
