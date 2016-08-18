@@ -6,7 +6,7 @@
 
 ## Description
 
-_This application will take an inputted whole number value that is less than 0 and greater than 4000._
+_This application will take an inputted whole number value that is greater than 0 and less than 4000._
 
 ## Specs
 
@@ -17,6 +17,10 @@ _This application will take an inputted whole number value that is less than 0 a
 * If number inputted number value is > 3,999, output error message.
   -Example Input: 4,001
   -Example Output: Please enter number values less than 4,000 and greater than 0.
+
+* If number inputted is not a whole number, output error message.
+  -Example Input: 4.5
+  -Example Output: Please enter a whole number.
 
 * After number is inputted, separate thousands, five hundred, hundreds, fifty, tens, five, and single digits into their own values.
   -Example Input: 1,284
